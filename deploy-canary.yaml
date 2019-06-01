@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: canary
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        track: canary
+        version: 1.0.0
+    spec:
+      containers:
+        - name: canary
+          image: arunak9/canary-deployment:latest
+          ports:
+            - name: http
+              containerPort: 80

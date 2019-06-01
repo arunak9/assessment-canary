@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: stable
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: app
+        track: stable
+        version: 1.0.0
+    spec:
+      containers:
+        - name: stable
+          image: arunak9/stable-deployment:latest
+          ports:
+            - name: http
+              containerPort: 80

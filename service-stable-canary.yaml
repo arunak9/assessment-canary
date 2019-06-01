@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: app-lb
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    nodePort: 30001
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: app
